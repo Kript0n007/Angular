@@ -1,0 +1,21 @@
+<h2>Lista de Pessoas</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let pessoa of pessoas">
+      <tr *ngIf="pessoa.idade > 30">
+        <td>{{ pessoa.nome }}</td>
+        <td>{{ pessoa.idade }}</td>
+      </tr>
+    </ng-container>
+    <h2>Soma da idade das pessoas com mais de 30 anos</h2>
+      {{ somaIdadesMais30 }}
+      <h2>Quantidade</h2>
+        {{quantidade}}
+  </tbody>
+</table>
