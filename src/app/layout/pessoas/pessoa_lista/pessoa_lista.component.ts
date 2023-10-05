@@ -1,6 +1,6 @@
 // src/app/components/person-list/person-list.component.ts
 import { Component } from '@angular/core';
-import { Pessoa } from '../../models/pessoa.model';
+import { Pessoa } from '../../../models/pessoa/pessoa';
 
 @Component({
   selector: 'pessoa_lista',
