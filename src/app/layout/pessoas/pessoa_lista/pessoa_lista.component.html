@@ -1,21 +1,36 @@
-<h2>Lista de Pessoas</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Idade</th>
-    </tr>
-  </thead>
-  <tbody>
-    <ng-container *ngFor="let pessoa of pessoas">
-      <tr *ngIf="pessoa.idade > 30">
-        <td>{{ pessoa.nome }}</td>
-        <td>{{ pessoa.idade }}</td>
-      </tr>
-    </ng-container>
-    <h2>Soma da idade das pessoas com mais de 30 anos</h2>
-      {{ somaIdadesMais30 }}
-      <h2>Quantidade</h2>
-        {{quantidade}}
-  </tbody>
-</table>
+<div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center mt-5">
+  <div class="w-50 h-100">
+    <div class="d-flex justify-content-between mb-3">
+      <h3>Lista de Pessoas</h3>
+      <button type="button" (click)="abrirModal(cadastro)" class="btn btn-success">Nova Pessoa</button>
+    </div>
+    <table class="table table-striped w-100">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Idade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pessoa of pessoas; let i = index">
+          <th scope="row">{{ pessoa.id }}</th>
+          <td>{{ pessoa.nome }}</td>
+          <td>{{ pessoa.idade }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #cadastro let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Cadastrar Pessoa</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-pessoa-details (retorno)="addNaLista($event)"/>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
+  </div>
+</ng-template>
